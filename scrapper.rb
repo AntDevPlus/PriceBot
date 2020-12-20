@@ -4,6 +4,7 @@ class Goclecd
     def self.getPrice(url)
         html = Nokogiri::HTML(open(url).read)
         all_price = Nokogiri::HTML.parse(html.xpath("//*[contains(@class, \'price-value\')]").to_s)
+        puts all_price
         prices = Array.new
         all_price.content.to_s.split(" ") do |l|
             prices << l.to_s[0..3]
